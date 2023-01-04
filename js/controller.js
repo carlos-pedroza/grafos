@@ -43,6 +43,25 @@ $(function(){
 
     });    
 
+    $("#crearGrafos").on("click", (event) => {
+        dibujarGrafos(matriz, vertices);
+    });
+
+    $("#generarArbol").on("click", (event) => {
+        crearGrafos(matriz, vertices);
+        for(var i=0; i<vertices; i++) {
+            var vertice = `V${i}`;
+            var node = { data: { id: vertice } };
+            nodes.push(node);
+        }
+
+        var id=1
+    
+    
+    
+    });
+
+    
     function llenarAristas(matrizVertices, vertices, aristas){
         if(aristas>(vertices*vertices)){
             aristas = vertices*vertices;
