@@ -1,13 +1,15 @@
 $(function(){
 
+    var vertices = 0;
+
+    var matriz = [];
+
     $("#createMatriz").on("click", (event) => {
 
-        let vertices = parseInt($("#vertices").val());
+        vertices = parseInt($("#vertices").val());
         let aristas = parseInt($("#aristas").val());
         $("#tableMatriz").html("");
-
-
-        let matriz = [];
+        matriz = [];
 
         for(let x=0; x<vertices; x++){
             let xv = [];
@@ -43,7 +45,7 @@ $(function(){
 
     function llenarAristas(matrizVertices, vertices, aristas){
         if(aristas>(vertices*vertices)){
-
+            aristas = vertices*vertices;
         }
         let c=1;
         while(c<=aristas){
@@ -63,10 +65,4 @@ $(function(){
         return x;
     }
 
-
-
-
-
-
-
-})
+});
