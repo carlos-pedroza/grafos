@@ -35,8 +35,8 @@ function crearGrafos(nodes, edges) {
       {
         selector: 'node',
         css: {
-          width: 50,
-          height: 50,
+          width: 20,
+          height: 20,
           'background-color':'#61bffc',
           content: 'data(id)'
         }
