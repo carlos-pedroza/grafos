@@ -48,20 +48,44 @@ $(function(){
     });
 
     $("#generarArbol").on("click", (event) => {
-        crearGrafos(matriz, vertices);
+        let nodes=[];
+        vertices = parseInt($("#vertices").val());
         for(var i=0; i<vertices; i++) {
             var vertice = `V${i}`;
             var node = { data: { id: vertice } };
             nodes.push(node);
         }
-
-        var id=1
-    
-    
+        edges = [];
+        edgesIndex = 1;
+        crearArbol(0, vertices);
+        crearGrafos(nodes, edges);
     
     });
-
     
+    var edges = [];
+    var edgesIndex = 1;
+    function crearArbol(node,totalVertices){
+        let peso = node*2;
+        let l= peso + 1;
+        let r= l + 1;
+        if (l<totalVertices){
+            let e1 = { data: { id: `e${edgesIndex++}`, source:  `V${node}`, target: `V${l}` } };
+            edges.push(e1);
+            crearArbol( l, totalVertices);
+        }
+
+        if(r<totalVertices){
+            let e2 = { data: { id: `e${edgesIndex++}`, source:  `V${node}`, target: `V${r}` } };
+            edges.push(e2);
+            crearArbol( r, totalVertices);
+        }
+        
+
+    }
+
+
+
+
     function llenarAristas(matrizVertices, vertices, aristas){
         if(aristas>(vertices*vertices)){
             aristas = vertices*vertices;
