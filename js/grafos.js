@@ -5,16 +5,16 @@ function dibujarGrafos(matrixVertices, vertices) {
   var edges = [];
 
   for(var i=0; i<vertices; i++) {
-    var vertice = `V${i}`;
+    var vertice = `V${i+1}`;
     var node = { data: { id: vertice } };
     nodes.push(node);
   }
 
   var id=1;
   for(var x=0; x<vertices; x++) {
-    var verticeX = `V${x}`;
+    var verticeX = `V${x+1}`;
     for(var y=0; y<vertices; y++) {
-      var verticeY = `V${y}`;
+      var verticeY = `V${y+1}`;
       if(matrixVertices[x][y]==1) {
         var edge = { data: { id: `e${id++}`, source: verticeX, target: verticeY } };
         edges.push(edge);

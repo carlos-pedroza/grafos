@@ -20,10 +20,29 @@ $(function(){
         }
     
         matriz = llenarAristas(matriz, vertices, aristas);
-
+        
+        let trX = $("<tr>");
+        for(let y = 0; y<vertices; y++) { //titulo vertice x
+            if(y == 0) { // titulo vertice y
+                let tdT =  $("<td>");
+                $(tdT).html('&nbsp;');
+                $(trX).append(tdT);
+            }
+            let td = $("<td>");
+            $(td).html(`V${y+1}`);
+            $(td).addClass("p-1").addClass("text-center");
+            $(trX).append(td);
+        }
+        $("#tableMatriz").append(trX);
         for(let x=0; x<vertices; x++) {
             let tr = $("<tr>");
             for(let y=0; y<vertices; y++) {
+                if(y == 0) { // titulo vertice y
+                    let tdT =  $("<td>");
+                    $(tdT).html(`V${x+1}`);
+                    $(tr).append(tdT);
+                }
+
                 let td = $("<td>");
                 
                 var link = $('<a>');
@@ -118,3 +137,5 @@ function cambiaArista(x, y) {
     console.log(matriz[x][y]);
     $(`#cell${x}_${y}`).html(matriz[x][y]);
 }
+
+//algo
