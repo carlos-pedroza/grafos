@@ -1,8 +1,8 @@
+var vertices = 0;
+var matriz = [];
+
 $(function(){
 
-    var vertices = 0;
-
-    var matriz = [];
 
     $("#createMatriz").on("click", (event) => {
 
@@ -25,7 +25,13 @@ $(function(){
             let tr = $("<tr>");
             for(let y=0; y<vertices; y++) {
                 let td = $("<td>");
-                $(td).html(matriz[x][y]);
+                
+                var link = $('<a>');
+                $(link).attr('id', `cell${x}_${y}`);
+                $(link).attr('href', `javascript:cambiaArista(${x},${y});`);
+                $(link).html(matriz[x][y]);
+
+                $(td).append(link);
 
                 if(y==0){
                     $(td).addClass("border-start");
@@ -83,9 +89,6 @@ $(function(){
 
     }
 
-
-
-
     function llenarAristas(matrizVertices, vertices, aristas){
         if(aristas>(vertices*vertices)){
             aristas = vertices*vertices;
@@ -109,3 +112,9 @@ $(function(){
     }
 
 });
+
+function cambiaArista(x, y) {
+    matriz[x][y] = matriz[x][y] == 0 ? 1 : 0;
+    console.log(matriz[x][y]);
+    $(`#cell${x}_${y}`).html(matriz[x][y]);
+}
